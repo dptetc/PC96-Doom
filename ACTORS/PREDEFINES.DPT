@@ -1,0 +1,4 @@
+actor Stamina : Ammo
+{
+	Inventory.MaxAmount 100
+}

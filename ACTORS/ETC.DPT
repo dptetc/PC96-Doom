@@ -1,0 +1,57 @@
+ACTOR Logfire 9900
+{
+	Decal		BarrelScorch
+	Radius		4
+	Height		6
+	+NOBLOCKMAP
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		Goto Active
+	Active:
+		TNT1 AAAAAAA 1 A_SpawnItemEx("Firey2",0,0,8,0,0,1,0,160,0)
+		LOOP
+	}
+}
+
+ACTOR Firey2 : BulletPuff
+{
+	Health		1
+	RenderStyle Add
+	Alpha		0
+	Scale		.3
+	Obituary "%o burned to death"
+	States
+	{
+	Spawn:
+		NULL A 0
+		NULL A 0 
+		Goto See
+	See:
+		NULL A 0 A_Jump(170,1)
+		Goto See+7
+		NULL A 0
+		NULL A 0 A_Jump(85,1)
+		Goto See+11
+		NULL A 0
+		NULL A 0
+		Goto See+15
+		//-----------------------
+		FIRE B 5 Bright //A_PlaySound("Barrel/Fire")
+		FIRE A 5 Bright A_SetTranslucent(.4,1)
+		FIRE A 5 Bright A_SetTranslucent(.8,1)
+		FIRE A 1 Bright A_Fadeout(.06)
+		Wait
+		FIRE B 5 Bright //A_PlaySound("Barrel/Fire")
+		FIRE B 5 Bright A_SetTranslucent(.4,1)
+		FIRE B 5 Bright A_SetTranslucent(.8,1)
+		FIRE B 1 Bright A_Fadeout(.08)
+		Wait
+		FIRE B 5 Bright //A_PlaySound("Barrel/Fire")
+		FIRE C 5 Bright A_SetTranslucent(.4,1)
+		FIRE C 5 Bright A_SetTranslucent(.8,1)
+		FIRE C 1 Bright A_Fadeout(.10)
+		Wait
+	}
+}

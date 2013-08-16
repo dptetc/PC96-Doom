@@ -1,0 +1,13 @@
+SWITCH SWITCH
+
+menu/activate		SWITCH
+menu/backup			SWITCH
+menu/prompt			SWITCH
+menu/cursor			SWITCH
+menu/change			SWITCH
+menu/invalid		SWITCH
+menu/dismiss		SWITCH
+menu/choose			SWITCH
+menu/clear			SWITCH
+menu/quit1			SWITCH
+menu/quit2			SWITCH

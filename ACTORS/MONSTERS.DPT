@@ -1,0 +1,36 @@
+Actor WeepingDemon 13666
+{
+	Health 0x2fffffff
+	Radius 20
+	Height 56
+	Mass 500
+	Speed 10
+	MeleeThreshold 255
+	+ISMONSTER
+	+FLOORCLIP
+	+NOPAIN
+	SeeSound "Skeleton/sight"
+	PainSound "Skeleton/pain"
+	ActiveSound "Skeleton/active"
+	MeleeSound "Skeleton/melee"
+	HitObituary "%o blinded by the excruciating pain."
+	States
+	{
+	Spawn:
+		INCA AB 10 A_Look
+		Loop
+	See:
+		INCA AABBCCDDEEFF 2 A_Chase
+		Loop
+	Melee:
+		INCA G 1 A_FaceTarget
+		INCA G 6 A_SkelWhoosh
+		INCA H 6 A_FaceTarget
+		INCA I 6 A_SkelFist
+		Goto See
+	Death:
+		INCA A 1
+		TNT1 A 0 A_Fall
+		Stop
+	}
+}

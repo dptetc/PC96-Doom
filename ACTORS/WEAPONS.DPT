@@ -1,0 +1,66 @@
+ACTOR Flashlight : Weapon
+{
+	+DONTBOB
+	+WIMPY_WEAPON
+	+AXEBLOOD
+	States
+	{
+	Ready:
+		D3FG A 1 A_Light2
+		D3FG A 0 A_WeaponReady
+		LOOP
+	Deselect:
+		D3FG A 1 A_Light0
+		D3FG A 0 A_PlaySound("SWITCH")
+		D3FG A 0 A_Lower
+		D3FG A 0 A_Lower
+		LOOP
+	Select: 
+		D3FG A 1 A_PlaySound("SWITCH")
+		D3FG A 0 A_Raise
+		D3FG A 0 A_Raise
+		LOOP
+	Fire: 
+		D3FG A 0 A_Light0
+		Goto Deselect
+	} 
+}
+
+ACTOR Light : BulletPuff
+{
+	Renderstyle None
+	Alpha 0.5
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+RIPPER
+	-ALLOWPARTICLES
+	states
+	{
+	Spawn:
+		PUFF A 1
+		stop
+	}
+}
+
+ACTOR Unarmed : Weapon
+{
+	+DONTBOB
+	+WIMPY_WEAPON
+	States
+	{
+	Ready:
+		TNT1 A 1 A_WeaponReady
+		LOOP
+	Deselect:
+		TNT1 A 1 A_Lower
+		TNT1 A 0 A_Lower
+		LOOP
+	Select: 
+		TNT1 A 1 A_Raise
+		TNT1 A 0 A_Raise
+		LOOP
+	Fire: 
+		TNT1 A 0
+		Goto Deselect
+	} 
+}
